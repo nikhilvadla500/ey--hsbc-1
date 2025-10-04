@@ -5,7 +5,7 @@ pipeline {
         GOOGLE_APPLICATION_CREDENTIALS = credentials('gcp-service-account') // Ensure service account JSON is available
         GKE_CLUSTER_NAME = 'hdfc-cluster1' // Update with your GKE cluster name
         GKE_PROJECT_ID = 'norse-strata-465507-a6' // Update with your GCP project ID
-        GKE_ZONE = 'us-central1-a' // Update with your GKE cluster zone
+        GKE_REGION = 'us-central1' // Update with your GKE cluster zone
         GIT_REPO_URL = 'https://github.com/nikhilvadla500/ey--hsbc-1.git'// Update with your Git repository URL
         GIT_BRANCH = 'main' // Update with your branch name if needed (default is 'main')
     }
@@ -26,7 +26,7 @@ pipeline {
                     // Authenticate with GCP using the service account key
                     sh 'gcloud auth activate-service-account --key-file=${GOOGLE_APPLICATION_CREDENTIALS}'
                     sh 'gcloud config set project ${GKE_PROJECT_ID}'
-                    sh 'gcloud config set compute/zone ${GKE_ZONE}'
+                    sh 'gcloud config set compute/region ${GKE_REGION}'
                 }
             }
         }
