@@ -2,6 +2,7 @@ pipeline {
     agent any
 
     environment {
+        USE_GKE_GCLOUD_AUTH_PLUGIN = 'True'
         GOOGLE_APPLICATION_CREDENTIALS = credentials('gcp-service-account') // Ensure service account JSON is available
         GKE_CLUSTER_NAME = 'hdfc-cluster1' // Update with your GKE cluster name
         GKE_PROJECT_ID = 'norse-strata-465507-a6' // Update with your GCP project ID
